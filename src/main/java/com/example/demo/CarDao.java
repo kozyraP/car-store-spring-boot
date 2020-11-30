@@ -26,13 +26,25 @@ public class CarDao {
                 car.getColor());
     }
 
-    public List<Map<String ,Object>> showByMark(String mark) {
+    public void deleteById(int id) {
+        String sql = "DELETE FROM Cars WHERE id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
+    public List<Map<String, Object>> showByMark(String mark) {
         String sql = "SELECT * FROM Cars WHERE mark LIKE ?";
         return jdbcTemplate.queryForList(sql, new Object[]{mark});
     }
 
+    public void updateById(String mark, String model, String color, int id) {
+        String sql = "UPDATE Cars SET mark = ?, model = ?, color = ? WHERE id = ?";
+        jdbcTemplate.update(sql, mark, model, color, id);
+    }
+
     @EventListener(ApplicationReadyEvent.class)
     public void dbNewItem() {
-        //save(new Car(7, "Audi", "R8", "green"));
+        save(new Car(1, "Audi", "R8", "Green"));
+        save(new Car(2, "Volvo", "XC90", "White"));
+        save(new Car(3, "Ford", "Mondeo", "Black"));
     }
 }

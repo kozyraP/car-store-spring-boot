@@ -1,5 +1,6 @@
-package com.example.demo;
+package com.example.demo.gui;
 
+import com.example.demo.CarDao;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
